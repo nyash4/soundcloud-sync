@@ -1,0 +1,218 @@
+@import '@fontsource/golos-text/400.css';
+@import '@fontsource/golos-text/500.css';
+@import '@fontsource/jetbrains-mono/400.css';
+
+:root {
+  --bg: #f3f1ec;
+  --ink: #1b1b19;
+  --muted: #76726a;
+  --rule: #d8d4ca;
+  --fill: #ebe8e1;
+  --accent: #d4461f;
+
+  --sans: 'Golos Text', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --gutter: 32px;
+  --fast: 140ms;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131312;
+    --ink: #ebeae5;
+    --muted: #8b8981;
+    --rule: #2a2a27;
+    --fill: #1c1c1a;
+    --accent: #e8603a;
+    color-scheme: dark;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fast: 0ms;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 15px/1.5 var(--sans);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  font-weight: 500;
+}
+
+p {
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* Small lowercase monospaced labels: timecodes, counters, statuses. */
+.mono {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Plain text button, underlined on hover. */
+.text-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  text-decoration: underline transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--fast);
+}
+
+.text-button:hover:not(:disabled) {
+  text-decoration-color: currentColor;
+}
+
+.text-button:disabled {
+  color: var(--muted);
+}
+
+/* Solid rectangular action. */
+.solid-button {
+  height: 40px;
+  padding: 0 18px;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 500;
+  transition: opacity var(--fast);
+}
+
+.solid-button:hover:not(:disabled) {
+  opacity: 0.86;
+}
+
+.solid-button:disabled {
+  opacity: 0.4;
+}
+
+.outline-button {
+  height: 40px;
+  padding: 0 18px;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  background: transparent;
+  font-weight: 500;
+}
+
+.outline-button:hover:not(:disabled) {
+  background: var(--fill);
+}
+
+/* Bare input: just a bottom hairline. */
+.line-input {
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  border-radius: 0;
+  background: transparent;
+  outline: none;
+  transition: border-color var(--fast);
+}
+
+.line-input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.line-input:hover {
+  border-bottom-color: var(--muted);
+}
+
+.line-input:focus {
+  border-bottom-color: var(--accent);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The SoundCloud iframe: rendered (so browsers run its audio) but invisible and inert. */
+.sc-widget-frame {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}

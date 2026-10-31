@@ -1,0 +1,11 @@
+/server/target
+/web/node_modules
+/web/dist
+/data
+/server/data
+.env
+.env.*
+!.env.example
+*.log
+*.db
+*.db-*

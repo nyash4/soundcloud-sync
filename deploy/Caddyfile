@@ -1,0 +1,5 @@
+# Caddy terminates HTTPS and proxies both HTTP and WebSocket traffic.
+{$DOMAIN} {
+	encode zstd gzip
+	reverse_proxy app:8080
+}
